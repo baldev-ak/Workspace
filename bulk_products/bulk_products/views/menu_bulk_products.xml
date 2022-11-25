@@ -1,0 +1,8 @@
+<odoo>
+        <menuitem id="menu_bulk_products"
+                name="Bulk Product"
+                action="action_bulk_product" 
+                parent="sale.sale_order_menu"
+                sequence='1'
+                />
+</odoo>

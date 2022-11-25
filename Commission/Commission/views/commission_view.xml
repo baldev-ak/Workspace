@@ -1,0 +1,61 @@
+<odoo>
+    <record id="sale_inherit_vieww" model="ir.ui.view">
+            <field name="name">Sale Inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name= 'supplier'/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="after">
+                    <field name= 'commission_percentage'/>
+                    <field name= 'commission_value'/>
+                </xpath>
+                <xpath expr="//group[@name='sale_total']/field[@name='tax_totals_json']" position="after">
+                    <field name= 'total_commission'/>
+                </xpath>
+                <!-- <xpath expr="//header/button[@name='action_quotation_send']" position="after">
+                    <button name="send_email_sale_order" string="Send by D3V" type="object" states="draft" class="btn-primary" data-hotkey="g"/>
+                </xpath> -->
+                <!-- For generating report -->
+               <!--  <xpath expr="//header/button[@name='action_quotation_send']" position="after">
+                    <button name="print_commission_report" string="Commission Report" type="object" class="btn-primary" data-hotkey="g"/>
+                </xpath> -->
+            </field>
+    </record>
+
+<!-- Server action for merging quotation state orders of one customer -->
+   <!--  <record id="action_server_merge_sale_order" model="ir.actions.server">
+            <field name="name">Merge Sale Orders</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">records.action_merge_sale_order()</field>
+        </record> -->
+
+<!-- Server action for splitting order_lines of a quoatation -->
+ <record id="action_server_split_order" model="ir.actions.server">
+            <field name="name">Split Order</field>
+            <field name="model_id" ref="Commission.model_sale_order"/>
+            <field name="binding_model_id" ref="Commission.model_sale_order"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_split_order()</field>
+        </record>
+
+<!-- Inherit Actions and Menu of other model -->
+    <!-- <record id = "action_sale_menu" model = "ir.actions.act_window">
+        <field name = "name">Country</field>
+        <field name = "res_model">res.country</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_inherit_country" 
+        name="Country"
+        parent = "sale.menu_sales_config"
+        action = "action_sale_menu">
+    </menuitem>
+ -->
+    
+</odoo>

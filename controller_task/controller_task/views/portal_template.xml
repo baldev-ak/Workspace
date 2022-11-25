@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="crm_lead_templates" name="CRM Lead">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <t t-as="crm_lead" t-foreach="lead">
+                    <p>
+                        <a t-attf-href="/crm_lead/#{crm_lead.id}" target="_blank">
+                            <t t-esc="crm_lead.name"/>
+                        </a>
+                    </p>
+                </t>
+            </div>
+        </t>
+    </template>
+    <template id="crm_lead_custom" name="CRM Lead">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <t t-as="lead" t-foreach="crm">
+                    <p>
+                        <t t-esc="lead.email_from"/>
+                    </p>
+                </t>
+            </div>
+        </t>
+    </template>
+<!--    <template id="product_inherit_custom" inherit_id="website_sale.product" active="True" customize_show="True"-->
+<!--              name="Corona pandemic" priority="21">-->
+<!--        <xpath expr="//div[@id='add_to_cart_wrap']/a[@id='add_to_cart']" position="replace">-->
+<!--            &lt;!&ndash;            <attribute name="class">btn btn-primary disabled</attribute> &ndash;&gt;-->
+<!--            <a role="button" id="add_to_cart_custom"-->
+<!--               class="btn btn-primary disabled btn-lg js_check_product a-submit my-1 mr-1 px-5 font-weight-bold flex-grow-1"-->
+<!--               href="#"><i class="fa fa-shopping-cart mr-2"/>ADD TO CART-->
+<!--            </a>-->
+
+<!--        </xpath>-->
+<!--        <xpath expr="//div[hasclass('row')]" position="inside">-->
+<!--            <marquee>-->
+<!--                <div class="alert alert-warning" style="width:100%;" role="alert">-->
+<!--                    Due to Pandemic, We are not accepting any orders right now-->
+<!--                </div>-->
+<!--            </marquee>-->
+<!--        </xpath>-->
+<!--    </template>-->
+</odoo>

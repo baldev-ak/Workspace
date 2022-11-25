@@ -1,0 +1,30 @@
+h1.title{
+  color: #fff;
+  font-family: Cursive;
+  text-align: center;
+  font-weight: bold;
+}
+
+#form{
+  background-color: #CBABA;
+}
+
+.form-group{
+  color: #fff;
+  font-family: Monospace;
+}
+
+input:required {
+  background-color: lightblue;
+}
+
+.btn-primary:hover{
+  background-color: darkblue; 
+}
+
+#form{
+  background-image: url('/user_template/static/src/img/row.jpg');
+  background-position: 50% 0;
+}
+
+

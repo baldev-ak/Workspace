@@ -1,0 +1,12 @@
+<odoo>
+    <record id="sale_inherit_vieww" model="ir.ui.view">
+            <field name="name">Sale Inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='action_quotation_send']" position="after">
+                    <button name="send_email_sale_order" string="Send by D3V" type="object" states="draft" class="btn-primary" data-hotkey="g"/>
+                </xpath>
+             </field>
+    </record>
+</odoo>

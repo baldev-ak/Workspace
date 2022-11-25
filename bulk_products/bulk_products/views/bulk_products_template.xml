@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="menu_bulk" model="website.menu">
+		<field name = "name">Create Bulk Products</field>
+		<field name = "url">/bulk_product_main</field>
+		<field name = "parent_id" ref="website.main_menu"/>
+		<field name = "sequence">55</field>
+	</record>
+
+	<template id="bulk_products_templates" name="Bulk Products">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+            	<section class="s_title parallax s_parallax_is_fixed bg-black-50 pt24 pb24" data-vcss="001" data-snippet="s_title" data-scroll-background-ratio="1">
+                    <span class="s_parallax_bg oe_img_bg" style="background-image: url('/web/image/website.s_banner_default_image'); background-position: 50% 0;"/>
+                    <div class="o_we_bg_filter bg-black-50"/>
+                    <div class="container">
+                        <h1>Bulk Products</h1>
+                    </div>
+                </section>
+                <section class="s_text_block pt40 pb40 o_colored_level " data-snippet="s_text_block">
+                    <div class="container s_allow_columns">
+                        <div class="row">
+                            <div class="col-lg-8 mt-4 mt-lg-0">
+                                <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                                    <div class="container">
+                                        <form id="bulk_form" action="/bulk_products" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-pre-fill="true">
+                                    	<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="contact1">
+                                                            <span class="s_website_form_label_content">Name</span>
+                                                            <span class="s_website_form_mark"> *</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input id="name" type="text" class="form-control s_website_form_input" name="name" required="" data-fill-with="name"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="phone">
+                                                            <span class="s_website_form_label_content">Phone Number</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input id="phone" type="tel" class="form-control s_website_form_input" name="phone" data-fill-with="phone"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="email">
+                                                            <span class="s_website_form_label_content">Email</span>
+                                                            <span class="s_website_form_mark"> *</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input id="email" type="email" class="form-control s_website_form_input" name="email" required="" data-fill-with="email"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="user_name">
+                                                            <span class="s_website_form_label_content">User Name</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <input id="user_name" type="text" class="form-control s_website_form_input" name="user_name" data-fill-with="commercial_company_name"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">
+                                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="bulk_products_ids">
+                                                            <span class="s_website_form_label_content">Product</span>
+                                                        </label>
+                                                        <div class="col-sm">
+                                                            <select name="bulk_products_ids" class="form-control s_website_form_input" required="required">
+																<t t-foreach="products_details" t-as="products">
+																	<option t-esc="products.name" t-att-value="products.id"/>
+																</t>
+															</select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group col-12 s_website_form_submit" data-name="Submit Button">
+                                                    <div style="width: 200px;" class="s_website_form_label"/>
+                                                    	<button type="submit" class="btn btn-primary pull-left">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-lg-4 mt-4 mt-lg-0">
+                                <ul class="list-unstyled mb-0 pl-2">
+                                    <li>My Company</li>
+                                    <li><i class="fa fa-map-marker fa-fw mr-2"/><span class="o_force_ltr">3575 Fake Buena Vista Avenue</span></li>
+                                    <li><i class="fa fa-phone fa-fw mr-2"/><span class="o_force_ltr">+1 (650) 555-0111</span></li>
+                                    <li><i class="fa fa-1x fa-fw fa-envelope mr-2"/><span>info@yourcompany.example.com</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+			</div>
+        </t>
+    </template>
+</odoo>

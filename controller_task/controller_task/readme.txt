@@ -1,0 +1,1 @@
+portal_template.xml => Covid Pandemic Warning and disable button

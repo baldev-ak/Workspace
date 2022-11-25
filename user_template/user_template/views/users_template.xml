@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Index -->
+<template id="user_creation_templates" name="Users">
+    <t t-call="website.layout">
+        <t t-set="additional_title">Users</t>
+        <section class="s_title parallax s_parallax_is_fixed pt24 pb24" data-vcss="001" data-snippet="s_title" data-scroll-background-ratio="1" style="background-image: url('/user_template/static/src/img/backgroud_image.jpg')">
+            <h1 class="title">Users Form</h1>
+                	<div class="container s_allow_columns">
+                        <div class="row">
+                            <div class="col-lg-5 mt-4 mt-lg-0" id="form" style="margin:auto;">
+                                <section class="s_website_form" style="margin:20px;" data-vcss="001" data-snippet="s_website_form">
+                                    <div class="container">        
+                                    	<form action="/create_user" method="post" enctype="multipart/form-data" class="was-validated">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required="required"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" id="exampleInputEmail1" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" required="required"/>
+                      </div>
+                      <div class="form-group">
+					    <label for="website">Website</label>
+					    <input type="text" id="website" class="form-control" placeholder="Enter Website" name="website"/>
+					  </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                       <input type="phone" id="phone" class="form-control" placeholder="Enter Phone Number" name="phone" required="required"/>
+                       <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                        <!-- </input> -->
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label" for="customFile">Upload</label>
+                        <input type="file" class="form-control" id="customFile" name="image_1920"/>
+                      </div>
+                      
+                      <button type="submit" id="button" class="btn btn-primary">Submit</button>
+                      <br></br>
+                </form>
+            </div>
+        </section>
+        </div>
+    </div>
+</div>
+</section>  
+           
+    </t>
+</template>
+
+</odoo>

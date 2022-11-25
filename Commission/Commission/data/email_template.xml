@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="send_email_sale_order" model="mail.template">
+            <field name="name">Sales Order: Send by email</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">{{ object.company_id.name }}</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+        Dear,
+        <t t-esc = 'object.partner_id.name'></t>
+        <br></br>
+        Your Quotation Date is: <t t-esc = 'object.date_order'></t>
+
+        Your Orders:
+        <table style="width:100%" border = '1px'>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Subtotal</th>
+                <th>Discounted Subtotal</th>
+            </tr>
+            <t t-foreach="object.order_line" t-as="order_lines">
+                <tr>
+                    <td><t t-out="order_lines.product_id.name"></t></td>
+                    <td><t t-out="order_lines.product_uom_qty"></t></td>
+                    <td><t t-out="order_lines.price_unit"></t></td>
+                    <td><t t-out="order_lines.price_subtotal"></t></td>
+                    <td><t t-esc="order_lines.price_subtotal-(order_lines.price_subtotal*5)/100"></t></td>
+                    <!-- <td>order_lines.product_uom_qty</td>
+                <td>order_lines.price_unit</td>
+                <td>order_lines.price_subtotal</td>
+                <td>order_lines.price_subtotal</td> -->
+                </tr>
+            </t>
+        </table>
+    </p>
+</div>
+                        </field>
+            <!-- <field name="report_template" ref="action_report_saleorder"/>
+            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field> -->
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

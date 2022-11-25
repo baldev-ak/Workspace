@@ -1,0 +1,11 @@
+<odoo>
+	<record id = "action_custom_design_report" model = "ir.actions.report">
+		<field name = "name">Custom Design report</field>
+		<field name = "model">sale.order</field>
+		<field name = "report_type">qweb-pdf</field>
+		<field name = "report_name">Commission.report_custom_design_template_footer</field>
+		<field name = "report_file">Commission.report_custom_design_template_footer</field>
+		<field name = "binding_model_id" ref="model_sale_order"/>
+		<field name = "binding_type">report</field>
+	</record>
+</odoo>

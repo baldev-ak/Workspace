@@ -1,0 +1,49 @@
+<odoo>
+<!-- =======================Action=========================== -->
+    <record id = "action_bulk_product" model = "ir.actions.act_window">
+                <field name = "name">Bulk Products</field>
+                <field name = "res_model">bulk.products</field>
+                <field name="view_mode">tree,form</field>
+                <field name="target">current</field>
+    </record>
+    <record id="tree_bulk_products_view" model="ir.ui.view">
+        <field name="name">bulk.products.tree</field>
+        <field name="model">bulk.products</field>
+        <field name="arch" type="xml">
+            <tree string="Bulk Products">
+                <field name="name"/>
+                <field name="bulk_products_ids"/>
+                <field name="user_id"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+      <record id="form_bulk_products_view" model="ir.ui.view">
+            <field name="name">bulk.products.form</field>
+            <field name="model">bulk.products</field>
+            <field name="arch" type="xml">
+                <form string="Library Book">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="bulk_products_ids" widget="many2many_tags"/>
+                            <field name="user_id"/>
+                            <field name="email"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sale_bulk_inherit_vieww" model="ir.ui.view">
+            <field name="name">Sale Inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name= 'bulk_product_template'/>
+                </xpath>
+            </field>
+    </record>
+</odoo>

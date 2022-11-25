@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supplier_wizard,access_user_supplier_wizard,model_supplier_wizard,base.group_user,1,1,1,1
+access_order_split_wizard,access_user_order_split_wizard,model_order_split_wizard,base.group_user,1,1,1,1
+access_delivery_product_wizard,access_user_delivery_product_wizard,model_delivery_product_wizard,base.group_user,1,1,1,1

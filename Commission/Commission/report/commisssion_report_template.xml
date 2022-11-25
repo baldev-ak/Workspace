@@ -1,0 +1,35 @@
+<odoo>
+	<template id="report_commission_template">
+			<t t-call="web.external_layout">
+				<div class="page">
+					<div class="oe_structure"/>
+					<div class="row mt32 mb32" id="informations">
+						<div class="col-auto col-3 mw-100 mb-2">
+							<strong>Hello: </strong>
+							<!-- <p class="m-0" t-out="docs.partner_id.name"/> -->
+						</div>
+					</div>
+			<!-- <div class="row mt32 mb32" id="informations">
+				<div class="col-auto col-3 mw-100 mb-2">
+					<strong>Your Book:</strong>
+					<p class="m-0" t-field="doc.name"/>
+					<p>Is on Top</p>
+				</div>   
+				<div class="col-auto col-3 mw-100 mb-2">
+					<strong>With ISBN Number:</strong>
+					<p class="m-0" t-field="doc.isbn_number"/>
+				</div>   
+			</div> -->
+				</div>
+				<br/><br/>
+			</t>
+		</template>
+		<template id="report_doc_invoice_template">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="Commission.report_commission_template"/>
+				</t>
+			</t>
+		</template>
+
+</odoo>

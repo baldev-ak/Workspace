@@ -1,0 +1,8 @@
+<!-- <odoo>
+        <menuitem id="menu_commission"
+                name="Supplier Commission"
+                action="action_supplier_commission" 
+                parent="account.menu_finance"
+                sequence='200'
+                />
+</odoo> -->
